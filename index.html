@@ -1,0 +1,746 @@
+<!doctype html>
+<html id="html-root" lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <base id="loverain-site-base" href="./" />
+
+        <script>
+            window.addEventListener("DOMContentLoaded", function () {
+                if (typeof DisableDevtool !== "function") return;
+                DisableDevtool({
+                    tkName: "key",
+                    md5: "9ac7ec230e0e4513578f309d6d3579ad",
+                    interval: "100",
+                });
+            });
+        </script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+            onload="this.rel = 'stylesheet'"
+        />
+
+        <style>
+            :root {
+                --loverain-main-font:
+                    "Noto Sans", "Noto Sans", -apple-system, BlinkMacSystemFont,
+                    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+                    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            }
+
+            html,
+            body,
+            input,
+            button,
+            select,
+            textarea {
+                font-family: var(--loverain-main-font) !important;
+                font-synthesis: weight;
+            }
+
+            .fas,
+            .far,
+            .fab,
+            .fa,
+            .bi,
+            [class^="bi-"],
+            [class*=" bi-"],
+            .material-icons,
+            i,
+            svg text {
+                font-family:
+                    "Font Awesome 6 Free", "Font Awesome 6 Brands",
+                    "bootstrap-icons", "Material Icons" !important;
+            }
+
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeLegibility;
+            }
+
+            html.loverain-preview-demo::before {
+                content: "";
+                position: fixed;
+                inset: -20%;
+                width: 140%;
+                height: 140%;
+                left: -20%;
+                top: -20%;
+                z-index: 2147483645;
+                pointer-events: none;
+                opacity: 0.14;
+                transform: rotate(-16deg);
+                mix-blend-mode: soft-light;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='150' viewBox='0 0 260 150'%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' fill-opacity='0.95' font-family='system-ui,sans-serif' font-size='38' font-weight='800' letter-spacing='6'%3EDEMO%3C/text%3E%3C/svg%3E");
+                background-size: 260px 150px;
+            }
+
+            html:not(.dark).loverain-preview-demo::before {
+                opacity: 0.1;
+                mix-blend-mode: multiply;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='150' viewBox='0 0 260 150'%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23000000' fill-opacity='0.55' font-family='system-ui,sans-serif' font-size='38' font-weight='800' letter-spacing='6'%3EDEMO%3C/text%3E%3C/svg%3E");
+            }
+
+            dialog.loverain-demo-watermark {
+                display: none;
+                position: fixed;
+                inset: 0;
+                width: 100%;
+                max-width: none;
+                height: 100%;
+                max-height: none;
+                margin: 0;
+                padding: 0;
+                border: none;
+                background: transparent;
+                align-items: center;
+                justify-content: center;
+                pointer-events: none;
+                user-select: none;
+                overflow: hidden;
+                z-index: 2147483646;
+                transform: translateZ(0);
+            }
+
+            dialog.loverain-demo-watermark::backdrop {
+                display: none;
+            }
+
+            html.loverain-preview-demo dialog.loverain-demo-watermark[open] {
+                display: flex;
+            }
+
+            .loverain-demo-watermark__grid {
+                position: absolute;
+                inset: -25%;
+                pointer-events: none;
+                opacity: 0.16;
+                transform: rotate(-16deg);
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='140' viewBox='0 0 240 140'%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23EE66A6' fill-opacity='0.85' font-family='system-ui,sans-serif' font-size='32' font-weight='800' letter-spacing='5'%3EDEMO%3C/text%3E%3C/svg%3E");
+                background-size: 240px 140px;
+            }
+
+            .loverain-demo-watermark__text {
+                position: relative;
+                z-index: 1;
+                font-size: clamp(4.5rem, 26vw, 13rem);
+                font-weight: 800;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.28);
+                -webkit-text-stroke: 1px rgba(238, 102, 166, 0.35);
+                text-shadow: 0 0 80px rgba(238, 102, 166, 0.45);
+                transform: rotate(-14deg);
+                white-space: nowrap;
+                mix-blend-mode: soft-light;
+            }
+
+            html:not(.dark) .loverain-demo-watermark__text {
+                color: rgba(30, 20, 50, 0.22);
+                -webkit-text-stroke: 1px rgba(238, 102, 166, 0.25);
+                mix-blend-mode: multiply;
+            }
+
+            .loverain-viewer-loading {
+                position: fixed;
+                inset: 0;
+                z-index: 2147483644;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1.5rem;
+                transition:
+                    opacity 0.45s ease,
+                    visibility 0.45s ease;
+            }
+
+            .loverain-viewer-loading--hidden {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            .loverain-viewer-loading__backdrop {
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(
+                        ellipse 80% 60% at 50% 20%,
+                        rgba(122, 40, 152, 0.45),
+                        transparent 55%
+                    ),
+                    radial-gradient(
+                        ellipse 70% 50% at 80% 80%,
+                        rgba(238, 102, 166, 0.2),
+                        transparent 50%
+                    ),
+                    #0a0610;
+            }
+
+            .loverain-viewer-loading__panel {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                max-width: min(220px, 82vw);
+            }
+
+            .loverain-viewer-loading__logo {
+                display: block;
+                width: min(132px, 52vw);
+                height: auto;
+                margin: 0 auto 0.75rem;
+                object-fit: contain;
+                pointer-events: none;
+                user-select: none;
+            }
+
+            .loverain-viewer-loading__action {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 3rem;
+                margin: 0 auto;
+            }
+
+            .loverain-viewer-loading__spinner {
+                width: 2.75rem;
+                height: 2.75rem;
+                margin: 0;
+                border-radius: 50%;
+                border: 3px solid rgba(238, 102, 166, 0.25);
+                border-top-color: #ee66a6;
+                animation: loverain-viewer-spin 0.85s linear infinite;
+            }
+
+            .loverain-viewer-loading__sub {
+                margin: 0.75rem 0 0;
+                min-height: 1.35em;
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.65);
+                line-height: 1.45;
+            }
+
+            .loverain-viewer-loading__open {
+                display: none;
+                margin: 0;
+                padding: 0.75rem 1.65rem;
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                border-radius: 999px;
+                font: inherit;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #fff;
+                cursor: pointer;
+                background: linear-gradient(
+                    135deg,
+                    #7b3d9e 0%,
+                    #c94d88 55%,
+                    #ee66a6 100%
+                );
+                box-shadow: 0 6px 24px rgba(238, 102, 166, 0.45);
+                transition:
+                    transform 0.15s ease,
+                    box-shadow 0.15s ease;
+            }
+
+            .loverain-viewer-loading__open:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 8px 28px rgba(238, 102, 166, 0.55);
+            }
+
+            .loverain-viewer-loading__open:focus-visible {
+                outline: 2px solid #99ddff;
+                outline-offset: 3px;
+            }
+
+            .loverain-viewer-loading--ready .loverain-viewer-loading__spinner {
+                display: none;
+            }
+
+            .loverain-viewer-loading--ready .loverain-viewer-loading__sub {
+                visibility: hidden;
+                height: 0;
+                min-height: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+
+            .loverain-viewer-loading--ready .loverain-viewer-loading__open {
+                display: inline-block;
+            }
+
+            @keyframes loverain-viewer-spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .loverain-viewer-loading__spinner {
+                    animation: none;
+                    border-top-color: rgba(238, 102, 166, 0.55);
+                }
+
+                .loverain-viewer-loading {
+                    transition: none;
+                }
+            }
+        </style>
+        <script>
+            (function () {
+                const appearance = "system";
+
+                if (appearance === "system") {
+                    const prefersDark = window.matchMedia(
+                        "(prefers-color-scheme: dark)",
+                    ).matches;
+
+                    if (prefersDark) {
+                        document.documentElement.classList.add("dark");
+                    }
+                }
+            })();
+        </script>
+
+        <style>
+            html {
+                background-color: oklch(1 0 0);
+            }
+
+            html.dark {
+                background-color: oklch(0.145 0 0);
+            }
+        </style>
+        <link rel="modulepreload" href="./build/assets/app-CX0-RSby.js" />
+        <link rel="preload" as="style" href="./build/assets/app-DRj5kdD6.css" />
+        <link rel="modulepreload" href="./build/assets/home-BHIVrSJRE.js" />
+        <link
+            rel="modulepreload"
+            href="./build/assets/particle-effect-D3Gqr4oF.js"
+        />
+        <link
+            rel="modulepreload"
+            href="./build/assets/three.module-5Y2TLo_k.js"
+        />
+        <link
+            rel="modulepreload"
+            href="./build/assets/troika-three-text.esm-DL5-P_dx.js"
+        />
+        <link rel="stylesheet" href="./build/assets/app-DRj5kdD6.css" />
+        <script src="./create/previewDB.js"></script>
+        <script type="module" src="./viewer-boot.js"></script>
+    </head>
+    <body class="font-sans antialiased">
+        <noscript>
+            <div
+                style="
+                    background: #ffdddd;
+                    color: #d8000c;
+                    padding: 15px;
+                    text-align: center;
+                    font-weight: bold;
+                "
+            >
+                Vui lòng bật JavaScript của trình duyệt để sử dụng đầy đủ chức
+                năng của trang web.
+            </div>
+        </noscript>
+
+        <div
+            id="loverain-viewer-loading"
+            class="loverain-viewer-loading"
+            role="status"
+            aria-live="polite"
+            aria-busy="true"
+        >
+            <div
+                class="loverain-viewer-loading__backdrop"
+                aria-hidden="true"
+            ></div>
+            <div class="loverain-viewer-loading__panel">
+                <img
+                    class="loverain-viewer-loading__logo"
+                    src="./assets/images/icon_ready.png"
+                    width="132"
+                    height="132"
+                    alt="Cơn mưa tình yêu"
+                    decoding="async"
+                />
+                <div class="loverain-viewer-loading__action">
+                    <div
+                        class="loverain-viewer-loading__spinner"
+                        aria-hidden="true"
+                    ></div>
+                    <button
+                        type="button"
+                        id="loverainViewerOpenBtn"
+                        class="loverain-viewer-loading__open"
+                        hidden
+                    >
+                        Mở quà
+                    </button>
+                </div>
+                <p
+                    id="loverainViewerLoadingText"
+                    class="loverain-viewer-loading__sub"
+                >
+                    Đang mở quà…
+                </p>
+            </div>
+        </div>
+        <div
+            id="app"
+            data-page='{
+        "component": "views/home",
+        "props": {
+            "errors": {},
+            "name": "LoveRain",
+            "quote": {
+                "message": "Gửi lời yêu thương",
+                "author": "LoveRain"
+            },
+            "auth": {
+                "user": null
+            },
+            "ziggy": {
+                "url": "/",
+                "port": null,
+                "defaults": [],
+                "location": "/content.html"
+            },
+            "message": "get success",
+            "title_raw": "LINH LÊ",
+            "client": {
+                "id": 4,
+                "fontName": "Mali",
+                "color": "#EE66A6",
+                "messages": ["10.10.2000","Chúc Vợ Có Tất Cả ","25251325.1314 ","HAPPY BIRTHDAY TO MY LOVE ","Chúc mừng sinh nhật Vk yêu  🎂","Chúc vợ một đời an nhiên "],
+                "created_at": "2025-05-29 13:37:12",
+                "updated_at": "2025-07-09 02:19:10",
+                "type_music": "link",
+                "music": "./assets/user_music.mp3",
+                "image" : ["./assets/user_images_0.jpg","./assets/user_images_1.jpg","./assets/user_images_2.jpg","./assets/user_images_3.jpg","./assets/user_images_4.jpg"],
+                "particle_density": "80",
+                "particle_speed": "70"
+            },
+            "clientId": "4"
+        },
+        "url": "/",
+        "version": "1",
+        "clearHistory": false,
+        "encryptHistory": false
+     }'
+        ></div>
+        <script>
+          const appDiv = document.getElementById('app');
+          if (appDiv) {
+            try {
+              const pageData = JSON.parse(appDiv.getAttribute('data-page'));
+              pageData.url = window.location.pathname + window.location.search;
+              
+              const client = pageData.props.client;
+              const quote = pageData.props.quote;
+              
+              if (quote.message === "__" + "QUOTE_MESSAGE" + "__") quote.message = "Gửi lời yêu thương";
+              if (quote.author === "__" + "QUOTE_AUTHOR" + "__") quote.author = "LoveRain";
+              
+              let title = pageData.props.title_raw;
+              if (title === "__" + "TITLE" + "__") title = "Phạm Duy Nghĩa";
+              
+              if (client.color === "__" + "COLOR" + "__") client.color = "#EE66A6";
+              if (client.music === "__" + "MUSIC" + "__" || !client.music) {
+                 client.music = "musics/daobuochongkong.mp3";
+                 client.type_music = "system";
+              }
+              if (client.messages === "__" + "MESSAGES" + "__" || !Array.isArray(client.messages) || client.messages.length === 0) {
+                 client.messages = ["Anh yeu em"];
+              }
+              if (client.image === "__" + "IMAGES" + "__" || !Array.isArray(client.image) || client.image.length === 0) {
+                 client.image = [
+                    "./assets/images/1.jpg",
+                    "./assets/images/2.jpg",
+                    "./assets/images/3.jpg",
+                    "./assets/images/4.jpg",
+                    "./assets/images/5.jpg",
+                    "./assets/images/6.jpg",
+                    "./assets/images/7.jpg"
+                 ];
+              }
+              
+              let densityPercent = Number(client.particle_density);
+              if (isNaN(densityPercent) || densityPercent <= 0) densityPercent = 100;
+              window.__L_DENS = Math.max(1, Math.round(9 * (densityPercent / 100)));
+              window.__L_DENS2 = Math.max(1, Math.round(18 * (densityPercent / 100)));
+              
+              let speedPercent = Number(client.particle_speed);
+              if (isNaN(speedPercent) || speedPercent <= 0) speedPercent = 100;
+              window.__L_SPEED = speedPercent / 100;
+              
+              client.messages = [title, ...client.messages];
+              
+              appDiv.setAttribute('data-page', JSON.stringify(pageData));
+            } catch (e) {
+              console.error("Lỗi parse data-page", e);
+            }
+          }
+        </script>
+        <button
+            id="toggle-audio"
+            class="text-white btn-audio-toggle"
+            type="button"
+            aria-label="Bật hoặc tắt nhạc nền"
+            style="
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 2147483647;
+            "
+        >
+            <i id="audio-icon" class="text-white fa-solid fa-volume-high"></i>
+        </button>
+        <script>
+            function resolveLoveRainAudioSrc(typeMusic, music) {
+                if (typeMusic === "link" && music) {
+                    return music;
+                }
+                if (typeMusic === "system" || !typeMusic) {
+                    if (!music) {
+                        return "./assets/musics/cochacyeuladay.mp3";
+                    }
+                    if (
+                        music.startsWith("http://") ||
+                        music.startsWith("https://") ||
+                        music.startsWith("blob:")
+                    ) {
+                        return music;
+                    }
+                    if (music.startsWith("./assets/")) {
+                        return music;
+                    }
+                    if (music.startsWith("musics/")) {
+                        return "./assets/" + music;
+                    }
+                    return "./assets/musics/" + music.replace(/^\/+/, "");
+                }
+                return "./assets/musics/cochacyeuladay.mp3";
+            }
+
+            function getPageClientAudio() {
+                const app = document.getElementById("app");
+                if (!app) return null;
+                try {
+                    const page = JSON.parse(app.getAttribute("data-page"));
+                    const c = page.props && page.props.client;
+                    if (c && c.music) {
+                        return {
+                            type_music: c.type_music || "system",
+                            music: c.music,
+                        };
+                    }
+                } catch (e) {}
+                return null;
+            }
+
+            function getActiveAudioConfig() {
+                if (window.__LOVERAIN_PREVIEW_AUDIO__) {
+                    return window.__LOVERAIN_PREVIEW_AUDIO__;
+                }
+                return (
+                    getPageClientAudio() || {
+                        type_music: "system",
+                        music: "musics/daobuochongkong.mp3",
+                    }
+                );
+            }
+
+            function bindViewerAudio() {
+                const audio = document.getElementById("audio-preview");
+                const toggleBtn = document.getElementById("toggle-audio");
+                const audioIcon = document.getElementById("audio-icon");
+                if (
+                    !audio ||
+                    !toggleBtn ||
+                    !audioIcon ||
+                    audio.dataset.loverainBound === "1"
+                )
+                    return false;
+
+                const isPreview =
+                    new URLSearchParams(location.search).get("preview") === "1";
+                const pathId = (location.pathname.match(
+                    /\/([a-f0-9]{24})\/?$/i,
+                ) || [])[1];
+                const hasRecordId =
+                    !!new URLSearchParams(location.search).get("id")?.trim() ||
+                    !!pathId;
+                if (
+                    (isPreview || hasRecordId) &&
+                    !window.__LOVERAIN_PREVIEW_AUDIO_READY__
+                ) {
+                    return false;
+                }
+
+                const cfg = getActiveAudioConfig();
+                const type_music = cfg.type_music;
+                const music = cfg.music;
+                audio.dataset.loverainBound = "1";
+
+                const updateAudioIcon = () => {
+                    if (audio.muted || audio.paused) {
+                        audioIcon.classList.remove("fa-volume-high");
+                        audioIcon.classList.add("fa-volume-xmark");
+                    } else {
+                        audioIcon.classList.remove("fa-volume-xmark");
+                        audioIcon.classList.add("fa-volume-high");
+                    }
+                };
+
+                toggleBtn.addEventListener("click", () => {
+                    if (audio.paused) {
+                        audio
+                            .play()
+                            .then(() => {
+                                audio.muted = false;
+                            })
+                            .catch(() => {
+                                alert(
+                                    "Không thể phát âm thanh. Có thể do trình duyệt chặn tự động phát.",
+                                );
+                            })
+                            .finally(() => {
+                                updateAudioIcon();
+                            });
+                    } else {
+                        audio.muted = !audio.muted;
+                        updateAudioIcon();
+                    }
+                });
+
+                const tryPlay = () => {
+                    if (audio.paused) {
+                        audio
+                            .play()
+                            .then(() => {
+                                audio.muted = false;
+                            })
+                            .catch(() => {})
+                            .finally(() => {
+                                updateAudioIcon();
+                            });
+                    } else {
+                        updateAudioIcon();
+                    }
+                };
+
+                audio.addEventListener("play", updateAudioIcon);
+                audio.addEventListener("pause", updateAudioIcon);
+                audio.addEventListener("volumechange", updateAudioIcon);
+
+                audio.src = resolveLoveRainAudioSrc(type_music, music);
+                audio.classList.remove("d-none");
+
+                tryPlay();
+
+                const oncePlay = () => {
+                    tryPlay();
+                    document.removeEventListener("click", oncePlay);
+                };
+                document.addEventListener("click", oncePlay);
+
+                const onInteract = () => tryPlay();
+                window.addEventListener("wheel", onInteract);
+                window.addEventListener("mousedown", onInteract);
+                window.addEventListener("mousemove", onInteract);
+                window.addEventListener("touchstart", onInteract);
+                return true;
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const waitForAudio = setInterval(() => {
+                    if (bindViewerAudio()) {
+                        clearInterval(waitForAudio);
+                    }
+                }, 200);
+
+                window.addEventListener("loverain-preview-audio", () => {
+                    const audio = document.getElementById("audio-preview");
+                    if (!audio) return;
+                    if (audio.dataset.loverainBound === "1") {
+                        const cfg = getActiveAudioConfig();
+                        audio.src = resolveLoveRainAudioSrc(
+                            cfg.type_music,
+                            cfg.music,
+                        );
+                        audio.load();
+                        audio.play().catch(function () {});
+                        return;
+                    }
+                    bindViewerAudio();
+                });
+            });
+
+            (function () {
+                function isPreviewDemo() {
+                    if (
+                        document.documentElement.dataset.loverainPreview === "1"
+                    )
+                        return true;
+                    if (
+                        document.documentElement.classList.contains(
+                            "loverain-preview-demo",
+                        )
+                    )
+                        return true;
+                    return (
+                        new URLSearchParams(location.search).get("preview") ===
+                        "1"
+                    );
+                }
+
+                function pinDemoWatermark() {
+                    if (!isPreviewDemo()) return;
+                    document.documentElement.classList.add(
+                        "loverain-preview-demo",
+                    );
+                    document.documentElement.dataset.loverainPreview = "1";
+                    var el = document.getElementById("loverain-demo-watermark");
+                    if (!el) {
+                        el = document.createElement("dialog");
+                        el.id = "loverain-demo-watermark";
+                        el.className = "loverain-demo-watermark";
+                        el.setAttribute("aria-hidden", "true");
+                        el.innerHTML =
+                            '<div class="loverain-demo-watermark__grid" aria-hidden="true"></div>' +
+                            '<span class="loverain-demo-watermark__text">Demo</span>';
+                    }
+                    if (!el.isConnected) {
+                        document.body.appendChild(el);
+                    }
+                    if (!el.hasAttribute("open")) {
+                        el.setAttribute("open", "");
+                    }
+                }
+
+                window.__loverainPinDemoWatermark = pinDemoWatermark;
+                pinDemoWatermark();
+                document.addEventListener("DOMContentLoaded", pinDemoWatermark);
+                window.addEventListener(
+                    "loverain-preview-audio",
+                    pinDemoWatermark,
+                );
+                if (isPreviewDemo()) {
+                    setInterval(pinDemoWatermark, 800);
+                }
+            })();
+        </script>
+    </body>
+</html>
